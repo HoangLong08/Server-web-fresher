@@ -15,6 +15,11 @@ export class UserEntity extends BaseEntity {
   })
   role: UserRoleType;
 
+  @Column({
+    default: '123',
+  })
+  password: string;
+
   @OneToMany(() => ActivityEntity, (activity) => activity.user)
   activities: ActivityEntity[];
 }

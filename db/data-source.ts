@@ -1,15 +1,16 @@
-import { FeedSeeder } from 'src/modules/feeds/feed.seeder';
-import { UserSeeder } from 'src/modules/users/users.seeder';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { SeederOptions } from 'typeorm-extension';
+import { FeedSeeder } from 'src/modules/feeds/feed.seeder';
+import { UserSeeder } from 'src/modules/users/users.seeder';
+require('dotenv').config();
 
 export const dataSourceOption: DataSourceOptions & SeederOptions = {
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: '123123',
-  database: 'webblog',
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   entities: ['dist/**/*.entity.js'], // execute entities to db
   migrations: ['dist/db/migrations/*.js'],
   seeds: [FeedSeeder, UserSeeder],

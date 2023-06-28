@@ -5,6 +5,7 @@ import { UsersModule } from './modules/users/users.module';
 import { TagsModule } from './modules/tags/tags.module';
 import { dataSourceOption } from 'db/data-source';
 import { ActivitiesModule } from './modules/activities/activities.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ActivitiesModule } from './modules/activities/activities.module';
     UsersModule,
     TagsModule,
     ActivitiesModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

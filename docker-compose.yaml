@@ -1,0 +1,40 @@
+# create a docker image from source code
+#{port in my pc (host)} : {port in container}
+version: '3.9'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123123
+      - POSTGRES_DB=fresher
+    ports:
+      - '5444:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+  back-end:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # args:
+      #   - NODE_ENV=development
+    # environment:
+    #   - DB_TYPE=postgres
+    #   - DB_HOST=localhost
+    #   - DB_PORT=5444
+    #   - DB_USERNAME=postgres
+    #   - DB_PASSWORD=123123
+    #   - DB_DATABASE=fresher
+
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgres
+
+volumes:
+  db:

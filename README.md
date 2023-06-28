@@ -24,6 +24,8 @@
 
 ## Description
 
+docker-compose -p web-fresher up -d
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
