@@ -22,4 +22,22 @@ export const dataSourceOption: DataSourceOptions & SeederOptions = {
 };
 
 const dataSource = new DataSource(dataSourceOption);
+async function testDatabaseConnection() {
+  try {
+    await dataSource.initialize();
+    console.log('---- Data Source has been initialized! ----');
+  } catch (error) {
+    console.log(
+      'process.env: ',
+      process.env.DB_HOST,
+      process.env.DB_PORT,
+      process.env.DB_USERNAME,
+      process.env.DB_PASSWORD,
+      process.env.DB_DATABASE,
+    );
+    console.error('Error during Data Source initialization', error);
+  }
+}
+
+testDatabaseConnection();
 export default dataSource;

@@ -19,8 +19,8 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
   });
-  await app.listen(5000, () => {
-    console.log(`app start with port ${5000}`);
+  await app.listen(process.env.BE_PORT, () => {
+    console.log(`app start with port ${process.env.BE_PORT}`);
   });
 
   if (module.hot) {
